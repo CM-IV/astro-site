@@ -1,0 +1,93 @@
+---
+export const prerender = true;
+
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import TimeLineElement from "@components/timeline.astro";
+---
+
+<Layout title="About">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">About Me</Fragment>
+    </Sectionhead>
+
+    <div class="mb-10 text-justify">
+      <p>
+        I approach web development with the same commitment and diligence that
+        I've applied in physically demanding roles. Having worked alongside
+        broadband infrastructure install crews, I understand the importance of
+        precision and teamwork in project execution. My experience installing
+        enourmous 'Windsor' windows and double doors has honed my attention to
+        detail and dedication to delivering crystal-clear results.
+      </p>
+      <br />
+      <p>
+        My passion for creating responsive and user-friendly websites, combined
+        with a strong work ethic, makes me an eager contributor to projects that
+        push the boundaries of innovation in web/systems development.
+      </p>
+    </div>
+
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Education</div>
+    </div>
+
+    <div class="time-line-container grid gap-4 mb-10">
+      <TimeLineElement
+        title="Enrollment"
+        subtitle1="2018 at UA Little Rock, US"
+      />
+      <TimeLineElement
+        title="Graduation"
+        subtitle1="B.Sc. Computer Science, Minor Mathematics"
+        subtitle2="2022 at UA Little Rock, US"
+      />
+    </div>
+
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Experience</div>
+    </div>
+
+    <div class="time-line-container mb-10">
+      <TimeLineElement
+        title="Summer Internship"
+        subtitle1="2019 at UA Little Rock, US"
+        subtitle2="Web Programming, Game Dev, VR/AR">
+        Computer Science intern at the Donaghey College of Science, Technology,
+        Engineering, and Mathematics.
+      </TimeLineElement>
+      <br />
+      <TimeLineElement
+        title="Infrastructure Install Crew"
+        subtitle1="2020 at Broadband Development Group, LLC">
+        Worked in the field and in the Little Rock office with engineers across
+        the country installing HyperLeap residential systems
+      </TimeLineElement>
+      <br />
+      <TimeLineElement
+        title="Handyman/Carpentry Work"
+        subtitle1="2022 at Butler Window & Door">
+        Worked in the shop and at construction sites installing custom Windsor
+        windows and doors
+      </TimeLineElement>
+    </div>
+
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Skills</div>
+    </div>
+
+    <ul class="list-disc md:columns-5 columns-2 mx-6">
+      <li>Desktop/Web App Development</li>
+      <li>Automation</li>
+      <li>SQL</li>
+      <li>Technical Writing</li>
+      <li>Rust</li>
+      <li>Typescript</li>
+      <li>Git</li>
+      <li>Docker</li>
+      <li>REST API</li>
+    </ul>
+  </Container>
+</Layout>

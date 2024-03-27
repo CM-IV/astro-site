@@ -1,0 +1,48 @@
+---
+import { Tick } from "./ui/icons";
+
+const features = [
+  {
+    title: "Tailored Solutions for Your Unique Needs",
+    description:
+      "Whether you need a robust e-commerce platform, a stunning website design, or a powerful business application, we have the skills and expertise to deliver outstanding results that exceed your expectations.",
+  },
+  {
+    title: "Cutting-Edge Technologies, Future-Proof Solutions",
+    description:
+      "Stay ahead of the competition with our cutting-edge technologies and future-proof solutions. As software engineers and web developers, we continuously keep ourselves updated with the latest industry trends and tools.",
+  },
+  {
+    title: "Agile Development, Timely Delivery",
+    description:
+      "Time is of the essence, and we understand that. Our agile development approach ensures that we deliver your projects on time, without compromising on quality.",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    Let's bring your vision to life
+  </h2>
+  <p class="text-lg mt-4">
+    Contact us today to explore how we can elevate your digital presence and
+    drive your business forward with innovative solutions that make a
+    difference.
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
+          <Tick />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

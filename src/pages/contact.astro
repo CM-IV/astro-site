@@ -1,0 +1,25 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import { ContactForm } from "@components/contactForm";
+---
+
+<Layout title="Contact">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Contact Us</Fragment>
+    </Sectionhead>
+
+    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
+      <div>
+        <p class="text-lg leading-relaxed mt-3">
+          Have something to say? We are here to help.
+        </p>
+      </div>
+      <div>
+        <ContactForm client:load/>
+      </div>
+    </div>
+  </Container>
+</Layout>

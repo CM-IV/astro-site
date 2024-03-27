@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+---
+
+<main
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="py-6 md:order-1 hidden md:block">
+    <Image
+      src="https://ik.imagekit.io/xbkhabiqcy9/img/oskar-yildiz-cOkpTiJMGzA-unsplash_iNLe4XuI4.jpg?updatedAt=1669480510560"
+      alt="hero laptop with code"
+      width={600}
+      height={400}
+    />
+  </div>
+  <div>
+    <h1
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      Crafting Digital Experiences that Inspire
+    </h1>
+    <p class="text-lg mt-4 max-w-xl">
+      Collaborate with a team that shares your passion for pushing the
+      boundaries of what's possible.
+    </p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <a
+        href="/contact"
+        target="_blank"
+        class="btn flex gap-1 items-center justify-center"
+        rel="noopener">
+        Get in Touch
+      </a>
+      <a
+        rel="noopener"
+        href="https://github.com/CM-IV/main-astro-site"
+        class="btn btn-outline flex gap-1 items-center justify-center"
+        target="_blank">
+        GitHub Repo
+      </a>
+    </div>
+  </div>
+</main>
