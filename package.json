@@ -21,6 +21,7 @@
     "@fontsource-variable/inter": "^5.0.17",
     "astro": "4.5.10",
     "astro-seo": "^0.8.3",
+    "revolt.js": "7.0.0-beta.11",
     "sharp": "^0.33.3",
     "solid-js": "^1.8.16"
   },
