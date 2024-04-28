@@ -66,7 +66,7 @@ const ContactForm = () => {
         <br />
       </form>
       <Show when={!response.loading} fallback={<div>Loading...</div>}>
-        <p>{response().message}</p>
+        <p>{response()?.message}</p>
       </Show>
       <Show when={response.error}>
         <p>There was an error!</p>
