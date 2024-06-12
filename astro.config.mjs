@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import db from "@astrojs/db";
-import node from "@astrojs/node";
+import netlify from '@astrojs/netlify';
 import solid from "@astrojs/solid-js";
 
 // https://astro.build/config
@@ -20,7 +20,5 @@ export default defineConfig({
   site: "https://home.civdev.xyz",
   integrations: [tailwind(), sitemap(), db(), solid()],
   output: "server",
-  adapter: node({
-    mode: "standalone",
-  }),
+  adapter: netlify(),
 });

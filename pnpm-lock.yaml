@@ -32,6 +32,9 @@ dependencies:
   astro-seo:
     specifier: ^0.8.4
     version: 0.8.4(prettier-plugin-astro@0.14.0)(prettier@3.3.2)(typescript@5.4.5)
+  dayjs:
+    specifier: ^1.11.11
+    version: 1.11.11
   sharp:
     specifier: ^0.33.4
     version: 0.33.4
@@ -58,9 +61,6 @@ devDependencies:
   tailwindcss:
     specifier: ^3.4.4
     version: 3.4.4
-  typescript:
-    specifier: ^5.4.5
-    version: 5.4.5
 
 packages:
 
@@ -2467,6 +2467,10 @@ packages:
   /data-uri-to-buffer@4.0.1:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
+    dev: false
+
+  /dayjs@1.11.11:
+    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
     dev: false
 
   /debug@2.6.9:

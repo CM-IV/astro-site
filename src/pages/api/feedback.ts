@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { Messages, db } from "astro:db";
+import dayjs from "dayjs";
 
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.formData();
@@ -29,4 +30,22 @@ export const POST: APIRoute = async ({ request }) => {
     }),
     { status: 200 },
   );
+};
+
+export const GET: APIRoute = async () => {
+  // Fetch todays messages from the DB
+  const messages = await db.select().from(Messages);
+
+  const todaysMessages = messages.filter((message) => {
+    const messageDate = dayjs(message.date);
+    const today = dayjs();
+    return messageDate.isSame(today, "day");
+  });
+
+  return new Response(JSON.stringify(todaysMessages), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
