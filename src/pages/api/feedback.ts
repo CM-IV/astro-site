@@ -1,8 +1,52 @@
 import type { APIRoute } from "astro";
-import { Messages, db } from "astro:db";
-import dayjs from "dayjs";
 
-export const POST: APIRoute = async ({ request }) => {
+type RateLimitStore = {
+  [key: string]: {
+    count: number;
+    lastRequest: number;
+  };
+};
+
+const rateLimitStore: RateLimitStore = {};
+const RATE_LIMIT_WINDOW = 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 1; 
+
+const checkRateLimit = (ip: string): boolean => {
+  const currentTime = Date.now();
+  
+  if (!rateLimitStore[ip]) {
+    rateLimitStore[ip] = { count: 1, lastRequest: currentTime };
+    return true;
+  }
+
+  const { count, lastRequest } = rateLimitStore[ip];
+
+  if (currentTime - lastRequest > RATE_LIMIT_WINDOW) {
+    rateLimitStore[ip] = { count: 1, lastRequest: currentTime };
+    return true;
+  }
+  
+  if (count < RATE_LIMIT_MAX_REQUESTS) {
+    rateLimitStore[ip].count += 1;
+    rateLimitStore[ip].lastRequest = currentTime;
+    return true;
+  }
+
+  return false;
+};
+
+export const POST: APIRoute = async ({ request, clientAddress }) => {
+  const ip = request.headers.get("x-forwarded-for") || clientAddress;
+  
+  if (!ip || !checkRateLimit(ip)) {
+    return new Response(
+      JSON.stringify({
+        message: "Too many requests. Please try again later.",
+      }),
+      { status: 429 },
+    );
+  }
+
   const data = await request.formData();
   const name = data.get("name") as string;
   const email = data.get("email") as string;
@@ -17,8 +61,6 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  await db.insert(Messages).values({ name, email, content });
-
   await fetch(import.meta.env.NTFY_URL, {
     method: "POST",
     body: `You got a message from ${name} at ${email}:\n\n${content}`,
@@ -30,22 +72,4 @@ export const POST: APIRoute = async ({ request }) => {
     }),
     { status: 200 },
   );
-};
-
-export const GET: APIRoute = async () => {
-  // Fetch todays messages from the DB
-  const messages = await db.select().from();
-
-  const todaysMessages = messages.filter((message) => {
-    const messageDate = dayjs(message.date);
-    const today = dayjs();
-    return messageDate.isSame(today, "day");
-  });
-
-  return new Response(JSON.stringify(todaysMessages), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
 };

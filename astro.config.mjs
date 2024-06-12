@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import db from "@astrojs/db";
 import netlify from '@astrojs/netlify';
 import solid from "@astrojs/solid-js";
 
@@ -18,7 +17,7 @@ export default defineConfig({
     },
   },
   site: "https://home.civdev.xyz",
-  integrations: [tailwind(), sitemap(), db(), solid()],
+  integrations: [tailwind(), sitemap(), solid()],
   output: "server",
   adapter: netlify(),
 });
