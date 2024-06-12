@@ -21,7 +21,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   await fetch(import.meta.env.NTFY_URL, {
     method: "POST",
-    body: "Backup successful 😀",
+    body: `You got a message from ${name} at ${email}:\n\n${content}`,
   });
 
   return new Response(
@@ -34,7 +34,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 export const GET: APIRoute = async () => {
   // Fetch todays messages from the DB
-  const messages = await db.select().from(Messages);
+  const messages = await db.select().from();
 
   const todaysMessages = messages.filter((message) => {
     const messageDate = dayjs(message.date);
